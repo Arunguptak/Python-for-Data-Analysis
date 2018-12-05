@@ -1,0 +1,43 @@
+Argument Description nrows Number of rows of subplots ncols Number of columns of subplots sharex All subplots should use the same X-axis ticks (adjusting the xlim will affect all subplots) sharey All subplots should use the same Y-axis ticks (adjusting the ylim will affect all subplots) subplot_kw Dict of keywords for creating the **fig_kw Additional keywords to subplots are used when creating the figure, such as plt.subplots(2, 2, figsize=(8, 6))
+
+Argument Description fname String containing a filepath or a Python file-like object. The figure format is inferred from the file extension, e.g. .pdf for PDF or .png for PNG. dpi The figure resolution in dots per inch; defaults to 100 out of the box but can be configured facecolor, edge color The color of the figure background outside of the subplots. 'w' (white), by default format The explicit file format to use ('png', 'pdf', 'svg', 'ps', 'eps', ...) bbox_inches The portion of the figure to save. If 'tight' is passed, will attempt to trim the empty space around the figure
+Line Plots:- 
+Series and DataFrame each have a plot method for making many different plot types. By default, they make line plots
+
+s = pd.Series(np.random.randn(10).cumsum(), index=np.arange(0, 100, 10))
+s.plot()
+
+Argument Description label Label for plot legend ax matplotlib subplot object to plot on. If nothing passed, uses active matplotlib subplot style Style string, like 'ko--', to be passed to matplotlib. alpha The plot fill opacity (from 0 to 1)
+
+
+Argument Description kind Can be 'line', 'bar', 'barh', 'kde' logy Use logarithmic scaling on the Y axis use_index Use the object index for tick labels rot Rotation of tick labels (0 through 360) xticks Values to use for X axis ticks yticks Values to use for Y axis ticks xlim X axis limits (e.g. [0, 10]) ylim Y axis limits grid Display axis grid (on by default)
+Argument Description title Plot title as string legend Add a subplot legend (True by default) sort_columns Plot columns in alphabetical order; by default uses existing column order
+
+Bar Plots:-
+:-Making bar plots instead of line plots is a simple as passing kind='bar' (for vertical bars) or kind='barh' (for horizontal bars). In this case, the Series or DataFrame index will be used as the X (bar) or Y (barh) ticks
+
+df.plot(kind='barh', stacked=True, alpha=0.5)
+A useful recipe for bar plots (as seen in an earlier chapter) is to visualize a Series’s value frequency using value_counts: s.value_counts ().plot(kind='bar')
+Histograms:-
+and Density Plots A histogram, with which you may be well-acquainted, is a kind of bar plot that gives a discretized display of value frequency. The data points are split into discrete, evenly spaced bins, and the number of data points in each bin is plotted
+
+tips['tip_pct'].plot(kind='kde')
+
+
+Scatter Plots :-
+Scatter plots are a useful way of examining the relationship between two one-dimensional data series. matplotlib has a scatter plotting method that is the workhorse of making these kinds of plots.
+plt.scatter(trans_data['m1'], trans_data['unemp'])
+
+from mpl_toolkits.basemap import Basemap 
+import matplotlib.pyplot as plt
+
+Chaco:-
+developed by Enthought, is a plotting toolkit suitable both for static plotting and interactive visualizations. It is especially wellsuited for expressing complex visualizations with data interrelationships. Compared with matplotlib, Chaco has much better support for interacting with plot elements and rendering is very fast, making it a good choice for building interactive GUI applications
+
+
+mayavi :-
+The mayavi project, developed by Prabhu Ramachandran, Gaël Varoquaux, and others, is a 3D graphics toolkit built on the open source C++ graphics library VTK. mayavi, like matplotlib, integrates with IPython so that it is easy to use interactively. The plots can be panned, rotated, and zoomed using the mouse and keyboard
+
+
+Other Packages :-
+course, there are numerous other visualization libraries and applications available in Python: PyQwt, Veusz, gnuplot-py, biggles, and others. I have seen PyQwt put to good use in GUI applications built using the Qt application framework using PyQt. While many of these libraries continue to be under active development (some of them
