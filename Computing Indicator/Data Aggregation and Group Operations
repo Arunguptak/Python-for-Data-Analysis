@@ -1,0 +1,9 @@
+Another type of transformation for statistical modeling or machine learning applications is converting a categorical variable into a “dummy” or “indicator” matrix. If a column in a DataFrame has k distinct values, you would derive a matrix or DataFrame containing k columns containing all 1’s and 0’s. pandas has a get_dummies function for doing this, though devising one yourself is not difficult. Let’s return to an earlier example DataFrame: In [189]: df = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'],   .....:                 'data1': range(6)})
+In [190]: pd.get_dummies(df['key']) Out[190]:   a  b  c 0  0  1  0 1  0  1  0 2  1  0  0 3  0  0  1 4  1  0  0 5  0  1  0 
+
+
+ Split a pandas object into pieces using one or more keys (in the form of functions, arrays, or DataFrame column names)
+ • Computing group summary statistics, like count, mean, or standard deviation, or a user-defined function
+ • Apply a varying set of functions to each column of a DataFrame
+ • Apply within-group transformations or other manipulations, like normalization, linear regression, rank, or subset selection
+ • Compute pivot tables and cross-tabulations • Perform quantile analysis and other data-derived group analyses
